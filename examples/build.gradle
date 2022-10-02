@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+group 'com.github.claudiodornelles'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+
+    implementation ([
+            "org.apache.avro:avro:1.11.1",
+            "org.slf4j:slf4j-log4j12:2.0.0-alpha6"
+    ])
+}
+
+test {
+    useJUnitPlatform()
+}
