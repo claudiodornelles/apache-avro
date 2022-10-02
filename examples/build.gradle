@@ -1,5 +1,8 @@
+import com.github.davidmc24.gradle.plugin.avro.GenerateAvroJavaTask
+
 plugins {
     id 'java'
+    id "com.github.davidmc24.gradle.plugin.avro" version "1.5.0"
 }
 
 group 'com.github.claudiodornelles'
@@ -21,4 +24,20 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+def generateAvro = tasks.register("generateAvro", GenerateAvroJavaTask) {
+    source("src/main/resources/avro")
+    outputDir = file("src/main/java")
+}
+
+tasks.named("compileJava").configure {
+    source(generateAvro)
+}
+
+avro {
+    fieldVisibility = "PRIVATE"
+    stringType = "String"
+    createSetters = false
+    enableDecimalLogicalType = true
 }
