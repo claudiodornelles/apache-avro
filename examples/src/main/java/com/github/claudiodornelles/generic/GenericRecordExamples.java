@@ -105,6 +105,8 @@ public class GenericRecordExamples {
         while (dataFileReader.hasNext()) {
           customer = dataFileReader.next(customer);
           LOGGER.info("Read customer from file: {}", customer);
+          LOGGER.info("customer.getSchema(): {}", customer.getSchema());
+          LOGGER.info("customer.get(\"first_name\"): {}", customer.get("first_name"));
         }
       }
     } catch (IOException e) {
